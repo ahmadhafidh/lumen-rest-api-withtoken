@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 
 class ProdukController extends Controller
 {
-
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function index()
     {
         $produk = Produk::all();
@@ -68,7 +70,7 @@ class ProdukController extends Controller
         }
 
         $produk->delete();
-        
+
         return response()->json(['message' => 'Produk Deleted!']);
     }
 }
